@@ -10,6 +10,8 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import Pipeline
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import f1_score
+from imblearn.over_sampling import SMOTE
+
 
 
 df = pd.read_csv('winequality-white.csv', sep=';')
@@ -58,8 +60,6 @@ scores = cross_val_score(pipe2, X_train, y_train, cv=rkf, scoring='f1_macro')
 print(f"Cross-validation accuracy scores: {scores}")
 print(f"Mean CV accuracy: {np.mean(scores):.4f}")
 print(f"Standard deviation of CV accuracy: {np.std(scores):.4f}")
-
-
 
 
 clf = RandomForestClassifier(random_state=42).fit(X_train, y_train)
